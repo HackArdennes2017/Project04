@@ -1,0 +1,107 @@
+{% extends "template.twig" %}
+
+{% block content %}
+  <div>
+  <svg
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:cc="http://creativecommons.org/ns#"
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:svg="http://www.w3.org/2000/svg"
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+ xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+ version="1.1"
+ x="0px"
+ y="0px"
+ viewBox="0 0 960 560"
+ style="enable-background:new 0 0 960 560;"
+ xml:space="preserve"
+ id="svg552"
+ sodipodi:docname="map.svg"
+ inkscape:version="0.92.2 5c3e80d, 2017-08-06"><metadata
+   id="metadata558"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs556" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1920"
+   inkscape:window-height="1016"
+   id="namedview554"
+   showgrid="false"
+   inkscape:zoom="0.91923881"
+   inkscape:cx="158.74292"
+   inkscape:cy="328.02581"
+   inkscape:window-x="0"
+   inkscape:window-y="27"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="svg552" />
+{% include 'partialSVG.xml' %}
+
+{% for data in datas %}
+/*
+  var type_image;
+  var state = "{{ data.state }}"
+  switch(state) {
+    case "ORANGE":
+      type_image = type_2
+      break;
+    case "RED":
+      type_image = type_3
+      break;
+    default:
+      type_image = type_1
+  }*/
+
+  <g><circle cx="{{data.coords.x}}" cy="{{data.coords.y}}" r="12"
+      style="stroke:#006600;
+             stroke-width: 3;
+             fill:#00cc00" onmousedown="interestClicked('{{data.title}}')" /></g>
+
+{% endfor %}
+   </svg>
+  </div>
+  <div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Change</th>
+        <th>Change</th>
+      </tr>
+    </thead>
+    <tbody>
+
+
+    {% for data in data %}
+      <tr class={{ data.state }}>
+        <th scope="row"> {{ data.interestId }} </th>
+        <td> {{ data.title }} </td>
+        <td> {{ data.type }} </td>
+        <td> {{ data.desc }} </td>
+        {% for d in enu %}
+          {% if d != data.state %}
+            <td class="click"> {{ d | lower }} <img src="images/{{ d | lower }}.png" alt="{{ d }}"/></td>
+          {% endif %}
+        {% endfor %}
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+
+<script>
+
+  
+</script>
+{% endblock %}

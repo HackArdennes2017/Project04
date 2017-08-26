@@ -1,0 +1,23 @@
+{
+  "name": "hackardennes",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.17.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "express": "~4.15.2",
+    "express-subdomain": "^1.0.5",
+    "fs": "0.0.1-security",
+    "http": "0.0.0",
+    "https": "^1.0.0",
+    "jade": "~1.11.0",
+    "mongoose": "^4.11.8",
+    "morgan": "~1.8.1",
+    "serve-favicon": "~2.4.2",
+    "twig": "^1.10.5"
+  }
+}
